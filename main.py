@@ -2,9 +2,18 @@ from fastapi import FastAPI, HTTPException
 from sqlalchemy import create_engine, Column, Integer, String, MetaData, Table
 from sqlalchemy.orm import sessionmaker
 from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
 
 # Создаем экземпляр FastAPI
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Укажите разрешенные домены (лучше уточнить на продакшене)
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Устанавливаем соединение с базой данных SQLite
 DATABASE_URL = "sqlite:///./test.db"
