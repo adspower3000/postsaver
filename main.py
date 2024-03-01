@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException
-from sqlalchemy import create_engine, Column, Integer, String, MetaData, Table
+from sqlalchemy import create_engine, Column, Integer, String, MetaData, Table, LargeBinary
 from sqlalchemy.orm import sessionmaker
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
@@ -25,7 +25,7 @@ files = Table(
     "files",
     metadata,
     Column("id", Integer, primary_key=True, index=True),
-    Column("data", String),
+    Column("data", LargeBinary),
 )
 
 # Создаем таблицы в базе данных
