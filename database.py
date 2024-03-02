@@ -1,4 +1,4 @@
-
+from sqlalchemy.sql.sqltypes import LargeBinary
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 

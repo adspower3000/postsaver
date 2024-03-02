@@ -5,9 +5,7 @@ from pydantic import BaseModel, ConfigDict
 
 
 class STaskAdd(BaseModel):
-    name: str
     description: str
-    deadline: Union[datetime, None] = None
 
 
 class STask(STaskAdd):
