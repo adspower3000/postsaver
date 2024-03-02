@@ -1,11 +1,13 @@
 from datetime import datetime
+from typing import Union
+
 from pydantic import BaseModel, ConfigDict
 
 
 class STaskAdd(BaseModel):
     name: str
     description: str
-    deadline: datetime | None = None
+    deadline: Union[datetime, None] = None
 
 
 class STask(STaskAdd):
