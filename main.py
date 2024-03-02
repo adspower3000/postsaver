@@ -2,8 +2,7 @@ from contextlib import asynccontextmanager
 import uvicorn
 
 from fastapi import FastAPI
-from database import create_tables
-#delete_tables
+from database import create_tables, delete_tables
 from fastapi.middleware.cors import CORSMiddleware
 
 from router import router as tasks_router
@@ -27,8 +26,8 @@ async def lifespan(app: FastAPI):
     await create_tables()
     print("База готова")
     yield
-    # await delete_tables()
-    # print("База очищена")
+    await delete_tables()
+    print("База очищена")
 
 
 app = FastAPI(lifespan=lifespan)

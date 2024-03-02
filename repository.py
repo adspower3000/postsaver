@@ -1,4 +1,4 @@
-from sqlalchemy import select
+from sqlalchemy import select, desc
 from database import TaskOrm, new_session
 from schemas import STaskAdd, STask
 
@@ -16,10 +16,10 @@ class TaskRepository:
             return new_task.id
 
     @classmethod
-    async def get_tasks(cls) -> list[STask]:
+    async def get_tasks(cls) -> STask:
         async with new_session() as session:
-            query = select(TaskOrm)
+            query = select(TaskOrm).order_by(desc(TaskOrm.id))
             result = await session.execute(query)
-            task_models = result.scalars().all()
-            tasks = [STask.model_validate(task_model) for task_model in task_models]
-            return tasks
+            task_model = result.scalar()
+            task = STask.model_validate(task_model)
+            return task
