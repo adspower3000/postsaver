@@ -10,7 +10,7 @@ router = APIRouter(
 )
 
 
-@router.get(
+@router.post(
         "/post_task",
         description="Добавляет таску в базу данных, а еще ....",
         summary="Добавляет таску в базу данных",
