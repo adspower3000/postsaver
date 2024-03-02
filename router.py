@@ -18,7 +18,7 @@ router = APIRouter(
 )
 
 
-async def add_task(task: STaskAdd = Depends()) -> STaskId:
+async def add_task(task: STaskAdd ) -> STaskId:
     new_task_id = await TaskRepository.add_task(task)
     return {"id": new_task_id}
 
