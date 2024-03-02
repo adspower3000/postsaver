@@ -10,8 +10,8 @@ router = APIRouter(
 )
 
 
-@router.post(
-        "/",
+@router.get(
+        "/post_task",
         description="Добавляет таску в базу данных, а еще ....",
         summary="Добавляет таску в базу данных",
         response_description="Вот такой ответ придет",
@@ -23,7 +23,20 @@ async def add_task(task: STaskAdd = Depends()) -> STaskId:
     return {"id": new_task_id}
 
 
-@router.get("/")
+@router.get("/get_task")
 async def get_tasks() -> STask:
     task = await TaskRepository.get_tasks()
     return task
+
+
+# @router.post(
+#         "/post_task",
+#         description="Добавляет таску в базу данных, а еще ....",
+#         summary="Добавляет таску в базу данных",
+#         response_description="Вот такой ответ придет",
+# )
+#
+#
+# async def add_task(task: STaskAdd = Depends()) -> STaskId:
+#     new_task_id = await TaskRepository.add_task(task)
+#     return {"id": new_task_id}
