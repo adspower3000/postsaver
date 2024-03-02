@@ -16,6 +16,8 @@ router = APIRouter(
         summary="Добавляет таску в базу данных",
         response_description="Вот такой ответ придет",
 )
+
+
 async def add_task(task: STaskAdd = Depends()) -> STaskId:
     new_task_id = await TaskRepository.add_task(task)
     return {"id": new_task_id}
