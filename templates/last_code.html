@@ -44,5 +44,25 @@
 				{{last_code.description}}
         </div>
     </div>
+    <script type="text/javascript">
+        setTimeout(xyu, 2000);
+        xyu();
+        function xyu(){
+            $.ajax({
+                url: 'https://postsaver.1100187-ca03887.tmweb.ru/code/get_last_code',
+                type: 'GET',
+                success: function(response) {
+                    console.log(response);
+                    $(".rectangle").empty();
+                    $(".rectangle").append(response.description);
+                    $(".link").attr("href", "/pages/code_by_id/" + response.id);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Ошибка при выполнении запроса:', error);
+                }
+            });
+        }
+
+    </script>
 </body>
 </html>
