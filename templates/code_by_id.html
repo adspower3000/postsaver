@@ -1,28 +1,51 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Last Code</title>
+<meta charset="UTF-8">
+    <title>Beautiful Layout</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #abd7eb;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-height: 100vh;
+            flex-direction: column;
+			size:20px;
+        }
+        .link {
+            color: #01463f;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+        .rectangle {
+            width: 95%;
+            height: 100vh;
+            background-color: #47485d; /* Dark blue, almost black */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
 </head>
 <body>
-    <div>
-        <div style="display: flex; margin-bottom: 15px; margin-left: 200px;">
-
-            <div>
-                <p>Code ID: {{ code_id }}</p>
-
-                <pre>
-
-                    {{code_by_id.description}}
-
-                </pre>
-
-            </div>
+    <div class="container">
+        <a href="/pages/last_code" target="_blank" class="link">Back</a>
+        <div class="rectangle">
+            <pre>
+				{{code_by_id.description}}
+			<pre>
         </div>
-
     </div>
 </body>
+
 </html>
