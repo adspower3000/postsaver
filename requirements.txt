@@ -14,3 +14,5 @@ SQLAlchemy==2.0.25
 starlette==0.35.1
 typing_extensions==4.9.0
 uvicorn==0.25.0
+fastui==0.5.2
+jinja2==3.1.3
