@@ -33,3 +33,4 @@ class TaskRepository:
             task_model = result.scalar_one_or_none()
             task = STask.model_validate(task_model)
             return task
+

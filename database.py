@@ -10,18 +10,11 @@ new_session = async_sessionmaker(engine, expire_on_commit=False)
 class Model(DeclarativeBase):
     pass
 
-class User(Model):
-    __tablename__ = "users"
-
-    id: Mapped[int] = mapped_column(primary_key=True)
-    name: Mapped[str] = mapped_column(unique=True)
-
 class TaskOrm(Model):
     __tablename__ = "tasks"
 
     id: Mapped[int] = mapped_column(primary_key=True)
     description: Mapped[str]
-
 
 
 async def create_tables():
