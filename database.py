@@ -1,4 +1,4 @@
-from sqlalchemy.sql.sqltypes import LargeBinary
+
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
@@ -15,6 +15,7 @@ class TaskOrm(Model):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     description: Mapped[str]
+    nickname: Mapped[str]
 
 
 async def create_tables():

@@ -1,15 +1,16 @@
-from datetime import datetime
-from typing import Union
+
 
 from pydantic import BaseModel, ConfigDict
 
 
 class STaskAdd(BaseModel):
     description: str
+    nickname: str
 
 
-class STask(STaskAdd):
-    id: int
+class STask(BaseModel):
+    description: str
+    nickname: str
 
     model_config = ConfigDict(from_attributes=True)
 

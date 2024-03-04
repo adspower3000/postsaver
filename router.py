@@ -25,6 +25,10 @@ async def get_tasks() -> STask:
     task = await TaskRepository.get_tasks()
     return task
 
+@router.get("/get_last_code/{nickname}")
+async def get_last_code_by_nickname(nickname: str) -> STask:
+    task = await TaskRepository.get_code(nickname)
+    return task
 
 @router.get("/get_code_by_id/{code_id}")
 async def get_tasks_by_id(code_id: int) -> STask:

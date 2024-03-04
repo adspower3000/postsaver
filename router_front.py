@@ -3,6 +3,7 @@ from fastapi.templating import Jinja2Templates
 
 from router import get_tasks
 from router import get_tasks_by_id
+from router import get_last_code_by_nickname
 
 router = APIRouter(
     prefix='/pages',
@@ -38,5 +39,20 @@ async def get_code_by_id(
             'code_id': code_id,
             'request': request,
             'code_by_id': code,
+        },
+    )
+
+@router.get('/code_by_nickname/{nickname}')
+async def get_code_by_nickname(
+        request: Request,
+        nickname: str,
+        code=Depends(get_last_code_by_nickname)
+):
+    return templates.TemplateResponse(
+        name='code_by_nickname.html',
+        context={
+            'code_nickname': nickname,
+            'request': request,
+            'code_by_nickname': code,
         },
     )

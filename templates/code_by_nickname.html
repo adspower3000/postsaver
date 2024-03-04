@@ -1,0 +1,52 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <title>Beautiful Layout</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #abd7eb;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-height: 80vh;
+            flex-direction: column;
+			size:20px;
+        }
+        .link {
+            color: #01463f;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+        .rectangle {
+            width: 95%;
+            height: 100vh;
+            background-color: #47485d; /* Dark blue, almost black */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            border-radius: 5px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+</head>
+<body>
+    <div class="container">
+        <a href="/pages/last_code" class="link">Back</a>
+        <div class="rectangle">
+				{{code_by_nickname.description}}
+                {{code_by_nickname.nickname}}
+        </div>
+    </div>
+</body>
+
+</html>

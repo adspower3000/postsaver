@@ -1,3 +1,4 @@
+from fastapi import Depends
 from sqlalchemy import select, desc
 from database import TaskOrm, new_session
 from schemas import STaskAdd, STask
@@ -24,6 +25,14 @@ class TaskRepository:
             task = STask.model_validate(task_model)
             return task
 
+    @classmethod
+    async def get_code(cls, nickname: str) -> STask:
+        async with new_session() as session:
+            query = select(TaskOrm).filter_by(nickname=nickname).order_by(TaskOrm.id.desc()).limit(1)
+            result = await session.execute(query)
+            task_model = result.scalar()
+            task = STask.model_validate(task_model)
+            return task
 
     @classmethod
     async def find_by_id(cls, code_id: int):
